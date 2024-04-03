@@ -1,0 +1,30 @@
+/* Skyblock Stylesheet */
+
+body {
+    background-color: #87ceeb;
+    color: #000000;
+    font-family: "Minecraft", sans-serif;
+}
+
+h1 {
+    color: #4682b4;
+}
+
+a {
+    color: #0000ff;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #6495ed;
+    color: #000000;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #87cefa;
+}

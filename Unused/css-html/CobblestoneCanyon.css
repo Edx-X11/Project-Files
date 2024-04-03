@@ -1,0 +1,30 @@
+/* Cobblestone Canyon Stylesheet */
+
+body {
+    background-color: #a52a2a;
+    color: #ffffff;
+    font-family: "Minecraft", sans-serif;
+}
+
+h1 {
+    color: #8b4513;
+}
+
+a {
+    color: #cd853f;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #8b4513;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #cd853f;
+}

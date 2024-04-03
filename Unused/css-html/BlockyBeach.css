@@ -1,0 +1,30 @@
+/* Blocky Beach Stylesheet */
+
+body {
+    background-color: #ffd700;
+    color: #000000;
+    font-family: "Minecraft", sans-serif;
+}
+
+h1 {
+    color: #8b4513;
+}
+
+a {
+    color: #ff8c00;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #ffa500;
+    color: #000000;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ff8c00;
+}

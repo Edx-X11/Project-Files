@@ -1,0 +1,30 @@
+/* Creeper Craze Stylesheet */
+
+body {
+    background-color: #003300;
+    color: #00ff00;
+    font-family: "Minecraft", sans-serif;
+}
+
+h1 {
+    color: #00cc00;
+}
+
+a {
+    color: #00aa00;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #006600;
+    color: #ffffff;
+    border: 2px solid #00ff00;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #009900;
+}

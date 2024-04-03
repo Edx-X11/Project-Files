@@ -1,0 +1,32 @@
+/* Nostalgic and Retro Stylesheet */
+
+body {
+    background-color: #f0f0f0;
+    color: #000000;
+    font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+    color: #ff9900;
+    text-shadow: 2px 2px #cc6600;
+}
+
+a {
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #ffcc00;
+    color: #000000;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ff9900;
+    color: #ffffff;
+}

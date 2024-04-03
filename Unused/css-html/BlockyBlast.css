@@ -1,0 +1,30 @@
+/* Blocky Blast Stylesheet */
+
+body {
+    background-color: #4c4c4c;
+    color: #ffffff;
+    font-family: "Minecraft", sans-serif;
+}
+
+h1 {
+    color: #ffaa00;
+}
+
+a {
+    color: #00ffff;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #333333;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #555555;
+}

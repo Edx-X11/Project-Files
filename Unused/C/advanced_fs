@@ -1,0 +1,130 @@
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/fs.h>
+#include <linux/uaccess.h>
+#include <linux/mm.h>
+#include <linux/slab.h>
+#include <linux/mutex.h>
+#include <linux/security.h>
+
+#define MODULE_NAME "custom_fs"
+#define DEVICE_NAME "custom_dev"
+
+// Constants for memory protection
+#define MEM_REGION_START 0x00000000
+#define MEM_REGION_SIZE 4096
+
+// Mutex for concurrency control
+static DEFINE_MUTEX(custom_mutex);
+
+// Custom data structure
+struct custom_data {
+    char *buffer;
+    size_t size;
+    struct timespec last_access_time;
+    struct timespec creation_time;
+    // Add extended attributes
+    // Add ACLs
+    // Add journaling support
+    // Add snapshotting support
+    // Add compression support
+    // Add encryption support
+    // Add data deduplication support
+    // Add online resizing support
+    // Add quota management
+};
+
+// Memory protection functions
+static int protect_memory(void) {
+    return set_memory_ro(MEM_REGION_START, MEM_REGION_SIZE);
+}
+
+static int unprotect_memory(void) {
+    return set_memory_rw(MEM_REGION_START, MEM_REGION_SIZE);
+}
+
+// File operations
+static int custom_open(struct inode *inode, struct file *file) {
+    mutex_lock(&custom_mutex);
+    printk(KERN_INFO "Custom filesystem opened\n");
+    return 0;
+}
+
+static int custom_release(struct inode *inode, struct file *file) {
+    printk(KERN_INFO "Custom filesystem closed\n");
+    mutex_unlock(&custom_mutex);
+    return 0;
+}
+
+static ssize_t custom_read(struct file *file, char __user *buf, size_t len, loff_t *offset) {
+    struct custom_data *data = file->private_data;
+
+    if (*offset >= data->size)
+        return 0; // EOF
+
+    size_t bytes_to_read = min(len, (size_t)(*offset + len > data->size ? data->size - *offset : len));
+    if (copy_to_user(buf, data->buffer + *offset, bytes_to_read)) {
+        return -EFAULT; // Bad address
+    }
+
+    // Update access time
+    data->last_access_time = current_kernel_time();
+
+    *offset += bytes_to_read;
+    return bytes_to_read;
+}
+
+// Kernel module initialization
+static int __init custom_fs_init(void) {
+    printk(KERN_INFO "Initializing custom filesystem module\n");
+
+    // Allocate memory for data structure
+    struct custom_data *data = kmalloc(sizeof(struct custom_data), GFP_KERNEL);
+    if (!data) {
+        printk(KERN_ERR "Failed to allocate memory for custom data\n");
+        return -ENOMEM; // Out of memory
+    }
+
+    // Allocate memory buffer
+    data->size = 1024;
+    data->buffer = kmalloc(data->size, GFP_KERNEL);
+    if (!data->buffer) {
+        printk(KERN_ERR "Failed to allocate memory buffer\n");
+        kfree(data);
+        return -ENOMEM; // Out of memory
+    }
+
+    // Initialize memory buffer (example)
+    snprintf(data->buffer, data->size, "Hello from custom filesystem module!\n");
+
+  
+
+    printk(KERN_INFO "Custom filesystem module initialized\n");
+    return 0; // Success
+}
+
+// Kernel module cleanup
+static void __exit custom_fs_exit(void) {
+    printk(KERN_INFO "Exiting custom filesystem module\n");
+
+    // Unregister filesystem
+    // Release resources
+
+    printk(KERN_INFO "Custom filesystem module exited\n");
+}
+
+// File operations structure
+static struct file_operations fops = {
+    .owner = THIS_MODULE,
+    .open = custom_open,
+    .release = custom_release,
+    .read = custom_read,
+};
+
+module_init(custom_fs_init);
+module_exit(custom_fs_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Your Name");
+MODULE_DESCRIPTION("Custom Filesystem Module");

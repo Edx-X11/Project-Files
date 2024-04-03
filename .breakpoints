@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "src/main/java/scripts/SeedGenerator.js": [
+      {
+        "id": "0f6ca377-ec3e-432a-9d16-8e09ccd5e054",
+        "line": 54,
+        "version": 1,
+        "index": 1724
+      }
+    ]
+  }
 }

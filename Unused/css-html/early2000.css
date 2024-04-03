@@ -1,0 +1,38 @@
+/* Early 2000 Stylesheet */
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Tahoma", Geneva, sans-serif;
+}
+
+h1 {
+    color: #00ff00;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a {
+    color: #ffff00;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff00ff;
+}
+
+.button {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ff6600;
+}
